@@ -1,9 +1,17 @@
 [gd_scene format=3 uid="uid://dumpvo2d3hdro"]
 
+[ext_resource type="Script" uid="uid://dqhlkss18rwai" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://r8c1mr31dunb" path="res://assets/textures/backgrounds/map-background.png" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://c6wadhpdu25p3" path="res://scenes/player/player.tscn" id="2_sl2e5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbyeo"]
+size = Vector2(361, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umx8v"]
+size = Vector2(20, 290)
+
 [node name="World" type="Node2D" unique_id=213811152]
+script = ExtResource("1_1fp7r")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1764845822]
 texture = ExtResource("1_dphjl")
@@ -11,3 +19,44 @@ centered = false
 
 [node name="Player" parent="." unique_id=58168645 instance=ExtResource("2_sl2e5")]
 position = Vector2(155, 126)
+
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=1711261432]
+position = Vector2(0, 11)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=449817658]
+position = Vector2(170.5, 0)
+shape = SubResource("RectangleShape2D_cbyeo")
+metadata/_edit_lock_ = true
+
+[node name="BottomWall" type="StaticBody2D" parent="." unique_id=1982555327]
+position = Vector2(0, 270)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall" unique_id=576418071]
+position = Vector2(171, 0)
+shape = SubResource("RectangleShape2D_cbyeo")
+metadata/_edit_lock_ = true
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=703142746]
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=827600945]
+position = Vector2(0, 135)
+shape = SubResource("RectangleShape2D_umx8v")
+metadata/_edit_lock_ = true
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=523104262]
+position = Vector2(341, 0)
+collision_mask = 0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=564624199]
+position = Vector2(0, 135)
+shape = SubResource("RectangleShape2D_umx8v")
+metadata/_edit_lock_ = true
+
+[connection signal="shot" from="Player" to="." method="_on_player_shot"]

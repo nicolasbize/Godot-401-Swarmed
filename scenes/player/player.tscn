@@ -86,7 +86,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=58168645]
+collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_gmlin")
+fire_rate = 5.0
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=444850054]
 texture = ExtResource("1_dovo2")
@@ -113,3 +116,17 @@ position = Vector2(0, -5)
 
 [node name="Weapon" parent="WeaponPivot" unique_id=214545583 instance=ExtResource("4_lvxji")]
 position = Vector2(3, 0)
+
+[node name="BulletSpawnLocation" type="Node2D" parent="WeaponPivot/Weapon" unique_id=768766724]
+position = Vector2(9, -4)
+
+[node name="ShotTimer" type="Timer" parent="." unique_id=2143662958]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=875446726]
+limit_left = 0
+limit_top = 0
+limit_right = 340
+limit_bottom = 270
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

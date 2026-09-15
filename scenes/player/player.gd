@@ -1,11 +1,20 @@
 class_name Player
 extends CharacterBody2D
 
+signal shot(bullet_global_position: Vector2, bullet_global_rotation: float)
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_pivot: Node2D = $WeaponPivot
 @onready var body_sprite: Sprite2D = $BodySprite
+@onready var weapon: Weapon = $WeaponPivot/Weapon
+@onready var shot_timer: Timer = $ShotTimer
+@onready var bullet_spawn_location: Node2D = $WeaponPivot/Weapon/BulletSpawnLocation
 
 @export var speed := 50.0
+@export var fire_rate := 2.0
+
+func _ready() -> void:
+	shot_timer.start(1.0 / fire_rate)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -26,3 +35,8 @@ func aim_at(target: Vector2) -> void:
 	else:
 		weapon_pivot.scale.y = 1
 	body_sprite.flip_h = weapon_pivot.scale.y < 0
+
+func _on_shot_timer_timeout() -> void:
+	weapon.shoot()
+	shot.emit(bullet_spawn_location.global_position, bullet_spawn_location.global_rotation)
+	
