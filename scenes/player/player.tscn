@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://c6wadhpdu25p3"]
+
+[ext_resource type="Texture2D" uid="uid://br0qomffj2iru" path="res://assets/textures/characters/player-body.png" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://c4bff3qak6sv1" path="res://assets/textures/characters/shadow.png" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://b40mhxxopo25l" path="res://scenes/player/player.gd" id="1_gmlin"]
+[ext_resource type="PackedScene" uid="uid://dtf45e2m7n57o" path="res://scenes/weapon/weapon.tscn" id="4_lvxji"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbyeo"]
+radius = 2.0
+height = 6.0
+
+[sub_resource type="Animation" id="Animation_gmlin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_75vfm"]
+resource_name = "hurt"
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 2, 0]
+}
+
+[sub_resource type="Animation" id="Animation_lvxji"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p47bc"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p47bc"]
+_data = {
+&"RESET": SubResource("Animation_gmlin"),
+&"hurt": SubResource("Animation_75vfm"),
+&"idle": SubResource("Animation_lvxji"),
+&"walk": SubResource("Animation_p47bc")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=58168645]
+script = ExtResource("1_gmlin")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=444850054]
+texture = ExtResource("1_dovo2")
+centered = false
+offset = Vector2(-8, -2)
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=2074891446]
+texture = ExtResource("1_8afob")
+centered = false
+offset = Vector2(-8, -16)
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1725119866]
+position = Vector2(-1, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cbyeo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=463896883]
+libraries/ = SubResource("AnimationLibrary_p47bc")
+autoplay = &"idle"
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=1617119573]
+position = Vector2(0, -5)
+
+[node name="Weapon" parent="WeaponPivot" unique_id=214545583 instance=ExtResource("4_lvxji")]
+position = Vector2(3, 0)
