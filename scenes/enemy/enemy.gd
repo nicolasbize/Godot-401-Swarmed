@@ -2,7 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 signal damage_received(damage_global_position: Vector2, damage_amount: int)
-signal destroyed(enemy_global_position: Vector2, extra_damage: int)
+signal destroyed(enemy_global_position: Vector2, extra_damage: int, reward_type: Coin.CoinType)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
@@ -13,6 +13,7 @@ signal destroyed(enemy_global_position: Vector2, extra_damage: int)
 @export var player : Player = null
 @export var speed : float = 10.0
 @export var max_health := 10
+@export var reward : Coin.CoinType
 
 enum State {Moving, Hurting, Dying}
 
@@ -49,7 +50,7 @@ func take_damage(amount: int) -> void:
 		if current_health == 0:
 			current_state = State.Dying
 			extra_damage = extra_damage / 2
-			destroyed.emit(global_position, extra_damage)
+			destroyed.emit(global_position, extra_damage, reward)
 			queue_free()
 	
 func recover() -> void:

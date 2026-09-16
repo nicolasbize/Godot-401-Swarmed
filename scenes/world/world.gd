@@ -5,6 +5,7 @@ var bullet_blueprint := preload("res://scenes/bullet/bullet.tscn")
 var damage_label_indicator_blueprint := preload("res://scenes/damage_label_indicator/damage_label_indicator.tscn")
 var explosion_area_blueprint := preload("res://scenes/explosion_area/explosion_area.tscn")
 var enemy_blueprint := preload("res://scenes/enemy/enemy.tscn")
+var coin_blueprint := preload("res://scenes/coin/coin.tscn")
 
 @onready var player: Player = $Player
 
@@ -33,8 +34,13 @@ func _on_enemy_damage_received(damage_global_position: Vector2, damage_amount: i
 	label_indicator.global_position = damage_global_position
 	label_indicator.set_damage(damage_amount)
 
-func _on_enemy_destroyed(enemy_global_position: Vector2, extra_damage: int) -> void:
+func _on_enemy_destroyed(enemy_global_position: Vector2, extra_damage: int, reward_type: Coin.CoinType) -> void:
 	var explosion : ExplosionArea = explosion_area_blueprint.instantiate()
 	add_child.call_deferred(explosion)
 	explosion.global_position = enemy_global_position
 	explosion.splash_damage = extra_damage
+	
+	var coin : Coin = coin_blueprint.instantiate()
+	add_child.call_deferred(coin)
+	coin.global_position = enemy_global_position
+	coin.type = reward_type
