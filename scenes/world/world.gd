@@ -3,8 +3,9 @@ extends Node2D
 
 var bullet_blueprint := preload("res://scenes/bullet/bullet.tscn")
 
-func _on_player_shot(bullet_global_position: Vector2, bullet_global_rotation: float) -> void:
+func _on_player_shot(bullet_global_position: Vector2, bullet_global_rotation: float, bullet_damage: int) -> void:
 	var bullet := bullet_blueprint.instantiate()
 	add_child(bullet)
 	bullet.global_position = bullet_global_position
 	bullet.global_rotation = bullet_global_rotation
+	bullet.damage = bullet_damage

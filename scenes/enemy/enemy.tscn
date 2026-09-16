@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dl7nv6iulnkd8"]
+
+[ext_resource type="Script" uid="uid://bcausjtb02jmr" path="res://scenes/enemy/enemy.gd" id="1_40wdo"]
+[ext_resource type="Texture2D" uid="uid://c4bff3qak6sv1" path="res://assets/textures/characters/shadow.png" id="2_a3pup"]
+[ext_resource type="Texture2D" uid="uid://w6y8ptgs16lv" path="res://assets/textures/characters/gargoyle.png" id="3_40wdo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cbyeo"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_a3pup"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tjssy"]
+resource_name = "hurt"
+length = 0.19999999999999998
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"recover"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_40wdo"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjssy"]
+_data = {
+&"RESET": SubResource("Animation_a3pup"),
+&"hurt": SubResource("Animation_tjssy"),
+&"walk": SubResource("Animation_40wdo")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbyeo"]
+radius = 7.0
+height = 16.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2125040356]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_40wdo")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=642321234]
+texture = ExtResource("2_a3pup")
+centered = false
+offset = Vector2(-7, -2)
+
+[node name="EnemySprite" type="Sprite2D" parent="." unique_id=339749584]
+texture = ExtResource("3_40wdo")
+centered = false
+offset = Vector2(-8, -16)
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1760689435]
+shape = SubResource("CircleShape2D_cbyeo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1178507850]
+libraries/ = SubResource("AnimationLibrary_tjssy")
+
+[node name="Timer" type="Timer" parent="." unique_id=108665303]
+one_shot = true
+
+[node name="BulletDetectionArea" type="Area2D" parent="." unique_id=1601299558]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetectionArea" unique_id=1261489849]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_cbyeo")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="BulletDetectionArea" to="." method="_on_bullet_detection_area_body_entered"]

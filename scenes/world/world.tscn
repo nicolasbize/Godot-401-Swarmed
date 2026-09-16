@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dqhlkss18rwai" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://r8c1mr31dunb" path="res://assets/textures/backgrounds/map-background.png" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://c6wadhpdu25p3" path="res://scenes/player/player.tscn" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://dl7nv6iulnkd8" path="res://scenes/enemy/enemy.tscn" id="4_6m72w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbyeo"]
 size = Vector2(361, 20)
@@ -11,6 +12,7 @@ size = Vector2(361, 20)
 size = Vector2(20, 290)
 
 [node name="World" type="Node2D" unique_id=213811152]
+y_sort_enabled = true
 script = ExtResource("1_1fp7r")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1764845822]
@@ -58,5 +60,25 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 135)
 shape = SubResource("RectangleShape2D_umx8v")
 metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." unique_id=2125040356 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
+position = Vector2(200, 95)
+player = NodePath("../Player")
+
+[node name="Enemy2" parent="." unique_id=950413776 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
+position = Vector2(206, 95)
+player = NodePath("../Player")
+
+[node name="Enemy3" parent="." unique_id=537925839 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
+position = Vector2(206, 112)
+player = NodePath("../Player")
+
+[node name="Enemy4" parent="." unique_id=1086913374 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
+position = Vector2(222, 112)
+player = NodePath("../Player")
+
+[node name="Enemy5" parent="." unique_id=1479336285 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
+position = Vector2(222, 98)
+player = NodePath("../Player")
 
 [connection signal="shot" from="Player" to="." method="_on_player_shot"]

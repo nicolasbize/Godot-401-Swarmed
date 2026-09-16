@@ -2,6 +2,7 @@ class_name Bullet
 extends AnimatableBody2D
 
 @export var speed := 300.0
+@export var damage := 3
 
 func _physics_process(delta: float) -> void:
 	var direction := Vector2.from_angle(rotation)
