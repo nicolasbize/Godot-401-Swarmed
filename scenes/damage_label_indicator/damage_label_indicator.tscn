@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bgf8syuf76rhr"]
+
+[ext_resource type="Script" uid="uid://xl711li5v3en" path="res://scenes/damage_label_indicator/damage_label_indicator.gd" id="1_1o7wf"]
+[ext_resource type="FontFile" uid="uid://di8cfisxjfcj7" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="1_adrt3"]
+
+[sub_resource type="Animation" id="Animation_adrt3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_1o7wf"]
+resource_name = "appear"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageLabel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, -6), Vector2(-8, -12), Vector2(-8, -11)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8qkr"]
+_data = {
+&"RESET": SubResource("Animation_adrt3"),
+&"appear": SubResource("Animation_1o7wf")
+}
+
+[node name="DamageLabelIndicator" type="Node2D" unique_id=948777196]
+script = ExtResource("1_1o7wf")
+
+[node name="DamageLabel" type="Label" parent="." unique_id=593929253]
+z_index = 1
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 8.0
+theme_override_fonts/font = ExtResource("1_adrt3")
+theme_override_font_sizes/font_size = 6
+text = "10"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=617796177]
+libraries/ = SubResource("AnimationLibrary_w8qkr")
+autoplay = &"appear"

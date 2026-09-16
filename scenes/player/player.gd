@@ -43,3 +43,6 @@ func _on_shot_timer_timeout() -> void:
 	var damage := randi_range(damage_min, damage_max)
 	shot.emit(bullet_spawn_location.global_position, bullet_spawn_location.global_rotation, damage)
 	
+func get_random_spawn_position() -> Vector2:
+	var random_angle := randf_range(0, TAU)
+	return position + Vector2.from_angle(random_angle) * 300

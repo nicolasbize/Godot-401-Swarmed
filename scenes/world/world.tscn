@@ -81,4 +81,19 @@ player = NodePath("../Player")
 position = Vector2(222, 98)
 player = NodePath("../Player")
 
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1697199439]
+wait_time = 7.0
+autostart = true
+
 [connection signal="shot" from="Player" to="." method="_on_player_shot"]
+[connection signal="damage_received" from="Enemy" to="." method="_on_enemy_damage_received"]
+[connection signal="destroyed" from="Enemy" to="." method="_on_enemy_destroyed"]
+[connection signal="damage_received" from="Enemy2" to="." method="_on_enemy_damage_received"]
+[connection signal="destroyed" from="Enemy2" to="." method="_on_enemy_destroyed"]
+[connection signal="damage_received" from="Enemy3" to="." method="_on_enemy_damage_received"]
+[connection signal="destroyed" from="Enemy3" to="." method="_on_enemy_destroyed"]
+[connection signal="damage_received" from="Enemy4" to="." method="_on_enemy_damage_received"]
+[connection signal="destroyed" from="Enemy4" to="." method="_on_enemy_destroyed"]
+[connection signal="damage_received" from="Enemy5" to="." method="_on_enemy_damage_received"]
+[connection signal="destroyed" from="Enemy5" to="." method="_on_enemy_destroyed"]
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn_enemies"]
