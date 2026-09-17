@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal shot(bullet_global_position: Vector2, bullet_global_rotation: float, bullet_damage: int)
+signal dead
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_pivot: Node2D = $WeaponPivot
@@ -81,7 +82,7 @@ func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
 		current_health -= 1
 		if current_health == 0:
 			current_state = State.Dying
-			print("OH NO I DIE")
+			dead.emit()
 		else:
 			current_state = State.Hurting
 			animation_player.play("hurt")

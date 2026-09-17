@@ -1,6 +1,8 @@
 class_name World
 extends Node2D
 
+signal game_reset
+
 var bullet_blueprint := preload("res://scenes/bullet/bullet.tscn")
 var damage_label_indicator_blueprint := preload("res://scenes/damage_label_indicator/damage_label_indicator.tscn")
 var explosion_area_blueprint := preload("res://scenes/explosion_area/explosion_area.tscn")
@@ -44,3 +46,6 @@ func _on_enemy_destroyed(enemy_global_position: Vector2, extra_damage: int, rewa
 	add_child.call_deferred(coin)
 	coin.global_position = enemy_global_position
 	coin.type = reward_type
+
+func _on_ui_restart_requested() -> void:
+	game_reset.emit()

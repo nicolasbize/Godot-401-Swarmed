@@ -1,0 +1,473 @@
+[gd_scene format=3 uid="uid://c3sye7ekjtgvm"]
+
+[ext_resource type="Script" uid="uid://owt04fqju2nf" path="res://scenes/ui/ui.gd" id="1_0dwhk"]
+[ext_resource type="Texture2D" uid="uid://caxqxb26umr5n" path="res://assets/textures/ui/ui_clock.png" id="1_f5cxw"]
+[ext_resource type="FontFile" uid="uid://di8cfisxjfcj7" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="2_aac20"]
+[ext_resource type="Texture2D" uid="uid://bk5jg2h75lt45" path="res://assets/textures/ui/ui_coin.png" id="3_g5kmx"]
+[ext_resource type="Texture2D" uid="uid://beni5rpkov8c5" path="res://assets/textures/ui/ui_heart.png" id="4_0dwhk"]
+[ext_resource type="Texture2D" uid="uid://cx85fxnf26sok" path="res://assets/textures/ui/restart-panel.png" id="6_7vp6q"]
+[ext_resource type="Texture2D" uid="uid://dqrk7hagymlrq" path="res://assets/textures/backgrounds/game-over.png" id="7_jcn1r"]
+[ext_resource type="PackedScene" uid="uid://u5oxjbpqo8mq" path="res://scenes/ui/game_button.tscn" id="8_jcn1r"]
+[ext_resource type="Texture2D" uid="uid://c2rrjef0jh6fg" path="res://assets/textures/backgrounds/game-won.png" id="9_uegxj"]
+
+[sub_resource type="Animation" id="Animation_uegxj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EndGamePanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EndGamePanel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EndGamePanel:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_hl07w"]
+resource_name = "hide_ending"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndGamePanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndGamePanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndGamePanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_y220t"]
+resource_name = "hide_game_over"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4kltc"]
+resource_name = "show_ending"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndGamePanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EndGamePanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndGamePanel:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jcn1r"]
+resource_name = "show_game_over"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverPanel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverPanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverPanel:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uegxj"]
+_data = {
+&"RESET": SubResource("Animation_uegxj"),
+&"hide_ending": SubResource("Animation_hl07w"),
+&"hide_game_over": SubResource("Animation_y220t"),
+&"show_ending": SubResource("Animation_4kltc"),
+&"show_game_over": SubResource("Animation_jcn1r")
+}
+
+[node name="UI" type="CanvasLayer" unique_id=1915319093]
+process_mode = 3
+script = ExtResource("1_0dwhk")
+
+[node name="ClockImage" type="TextureRect" parent="." unique_id=770635114]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 9.0
+offset_bottom = 9.0
+texture = ExtResource("1_f5cxw")
+
+[node name="TimeLeftLabel" type="Label" parent="." unique_id=474680162]
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 9.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 6
+text = "20:00"
+
+[node name="CoinImage" type="TextureRect" parent="." unique_id=328110072]
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 9.0
+offset_bottom = 19.0
+texture = ExtResource("3_g5kmx")
+
+[node name="CoinLabel" type="Label" parent="." unique_id=1393220390]
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 32.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 1, 0.050980393, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 6
+text = "5000"
+
+[node name="HealthImage" type="TextureRect" parent="." unique_id=1011989529]
+offset_left = 2.0
+offset_top = 22.0
+offset_right = 9.0
+offset_bottom = 29.0
+texture = ExtResource("4_0dwhk")
+
+[node name="HealthLabel" type="Label" parent="." unique_id=137494333]
+offset_left = 12.0
+offset_top = 23.0
+offset_right = 32.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 0.09803922, 0.050980393, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 6
+text = "9/10"
+
+[node name="GameOverPanel" type="TextureRect" parent="." unique_id=52983737]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -65.5
+offset_right = 88.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_7vp6q")
+
+[node name="TextureRect" type="TextureRect" parent="GameOverPanel" unique_id=1004518055]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.5
+offset_right = 169.0
+offset_bottom = 103.5
+texture = ExtResource("7_jcn1r")
+
+[node name="Label" type="Label" parent="GameOverPanel" unique_id=665115597]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 20.5
+offset_right = 168.0
+offset_bottom = 47.5
+theme_override_colors/font_color = Color(1, 0.14117648, 1, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 12
+text = "GAME OVER!!
+YOU CAN DO THIS!!"
+horizontal_alignment = 1
+
+[node name="GameOverTimeLabel" type="Label" parent="GameOverPanel" unique_id=163871361]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 73.5
+offset_right = 168.0
+offset_bottom = 100.5
+theme_override_colors/font_color = Color(1, 0.14117648, 0.21176471, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 12
+text = "TIME LEFT: 02:15"
+horizontal_alignment = 1
+
+[node name="RestartButton" parent="GameOverPanel" unique_id=1922774249 instance=ExtResource("8_jcn1r")]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 106.5
+offset_right = 117.0
+offset_bottom = 126.5
+
+[node name="EndGamePanel" type="TextureRect" parent="." unique_id=1657093437]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -65.5
+offset_right = 88.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_7vp6q")
+
+[node name="TextureRect" type="TextureRect" parent="EndGamePanel" unique_id=1265045774]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.5
+offset_right = 169.0
+offset_bottom = 103.5
+texture = ExtResource("9_uegxj")
+
+[node name="Label" type="Label" parent="EndGamePanel" unique_id=1674135440]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 20.5
+offset_right = 168.0
+offset_bottom = 47.5
+theme_override_colors/font_color = Color(1, 0.14117648, 1, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 12
+text = "YOU WON!!
+YOU'RE AMAZING!!"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="EndGamePanel" unique_id=508510021]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 73.5
+offset_right = 168.0
+offset_bottom = 100.5
+theme_override_colors/font_color = Color(1, 0.8745098, 0.21176471, 1)
+theme_override_constants/line_spacing = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_aac20")
+theme_override_font_sizes/font_size = 12
+text = "SCORE: 02:15"
+horizontal_alignment = 1
+
+[node name="WonRestartButton" parent="EndGamePanel" unique_id=829320155 instance=ExtResource("8_jcn1r")]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 106.5
+offset_right = 117.0
+offset_bottom = 126.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1102099444]
+libraries/ = SubResource("AnimationLibrary_uegxj")
+
+[connection signal="pressed" from="GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="EndGamePanel/WonRestartButton" to="." method="_on_won_restart_button_pressed"]
