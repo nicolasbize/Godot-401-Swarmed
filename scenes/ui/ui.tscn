@@ -3,12 +3,22 @@
 [ext_resource type="Script" uid="uid://owt04fqju2nf" path="res://scenes/ui/ui.gd" id="1_0dwhk"]
 [ext_resource type="Texture2D" uid="uid://caxqxb26umr5n" path="res://assets/textures/ui/ui_clock.png" id="1_f5cxw"]
 [ext_resource type="FontFile" uid="uid://di8cfisxjfcj7" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="2_aac20"]
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="2_mgwkc"]
+[ext_resource type="Resource" uid="uid://d21tb4y03b6tq" path="res://resources/upgrades/fire_rate_upgrade.tres" id="3_4w2x3"]
 [ext_resource type="Texture2D" uid="uid://bk5jg2h75lt45" path="res://assets/textures/ui/ui_coin.png" id="3_g5kmx"]
 [ext_resource type="Texture2D" uid="uid://beni5rpkov8c5" path="res://assets/textures/ui/ui_heart.png" id="4_0dwhk"]
+[ext_resource type="Resource" uid="uid://cgtgyb2gj7mdh" path="res://resources/upgrades/magnet_upgrade.tres" id="4_svq4k"]
+[ext_resource type="Resource" uid="uid://fwle40c0d6gd" path="res://resources/upgrades/max_damage_upgrade.tres" id="5_ygedu"]
 [ext_resource type="Texture2D" uid="uid://cx85fxnf26sok" path="res://assets/textures/ui/restart-panel.png" id="6_7vp6q"]
+[ext_resource type="Resource" uid="uid://djd5pgwpund8h" path="res://resources/upgrades/max_health_upgrade.tres" id="6_oopc8"]
 [ext_resource type="Texture2D" uid="uid://dqrk7hagymlrq" path="res://assets/textures/backgrounds/game-over.png" id="7_jcn1r"]
+[ext_resource type="Resource" uid="uid://btqjva1bd7ajw" path="res://resources/upgrades/min_damage_upgrade.tres" id="7_qmss2"]
+[ext_resource type="Resource" uid="uid://bseo1o4dve4l3" path="res://resources/upgrades/speed_upgrade.tres" id="8_26a3v"]
 [ext_resource type="PackedScene" uid="uid://u5oxjbpqo8mq" path="res://scenes/ui/game_button.tscn" id="8_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://c2rrjef0jh6fg" path="res://assets/textures/backgrounds/game-won.png" id="9_uegxj"]
+[ext_resource type="PackedScene" uid="uid://dbel4oet8ob4h" path="res://scenes/ui/upgrade_panel.tscn" id="10_y220t"]
+[ext_resource type="AudioStream" uid="uid://bt13i2cpyn03u" path="res://assets/sounds/level-up.wav" id="18_4w2x3"]
+[ext_resource type="AudioStream" uid="uid://dh0ualilarmyq" path="res://assets/music/torn-of-hope.mp3" id="19_svq4k"]
 
 [sub_resource type="Animation" id="Animation_uegxj"]
 length = 0.001
@@ -83,6 +93,114 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.8, 0.8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UpgradeDialog:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UpgradeDialog/ShadowBackground:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UpgradeDialog/UpgradePanel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UpgradeDialog/UpgradePanel2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UpgradeDialog/UpgradePanel3:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UpgradeDialog/UpgradePanel:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UpgradeDialog/UpgradePanel2:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UpgradeDialog/UpgradePanel3:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("UpgradeDialog/ShadowBackground:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hl07w"]
@@ -195,6 +313,133 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_hc5d0"]
+resource_name = "hide_upgrades"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradeDialog/UpgradePanel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpgradeDialog/UpgradePanel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeDialog/UpgradePanel2:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeDialog/UpgradePanel2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UpgradeDialog/UpgradePanel3:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpgradeDialog/UpgradePanel3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UpgradeDialog/ShadowBackground:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UpgradeDialog/ShadowBackground:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"resume_gameplay"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UpgradeDialog:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_4kltc"]
 resource_name = "show_ending"
 length = 0.39999999999999997
@@ -277,19 +522,123 @@ tracks/2/keys = {
 "values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_swkix"]
+resource_name = "show_upgrades"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UpgradeDialog:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpgradeDialog/ShadowBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeDialog/UpgradePanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpgradeDialog/UpgradePanel2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UpgradeDialog/UpgradePanel3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpgradeDialog/UpgradePanel:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UpgradeDialog/UpgradePanel2:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UpgradeDialog/UpgradePanel3:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 0.45000002, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uegxj"]
 _data = {
 &"RESET": SubResource("Animation_uegxj"),
 &"hide_ending": SubResource("Animation_hl07w"),
 &"hide_game_over": SubResource("Animation_y220t"),
+&"hide_upgrades": SubResource("Animation_hc5d0"),
 &"show_ending": SubResource("Animation_4kltc"),
-&"show_game_over": SubResource("Animation_jcn1r")
+&"show_game_over": SubResource("Animation_jcn1r"),
+&"show_upgrades": SubResource("Animation_swkix")
 }
 
 [node name="UI" type="CanvasLayer" unique_id=1915319093]
 process_mode = 3
 script = ExtResource("1_0dwhk")
-game_duration_min = 5.0
+game_duration_min = 20.0
+possible_ugprades = Array[ExtResource("2_mgwkc")]([ExtResource("3_4w2x3"), ExtResource("4_svq4k"), ExtResource("5_ygedu"), ExtResource("6_oopc8"), ExtResource("7_qmss2"), ExtResource("8_26a3v")])
 
 [node name="ClockImage" type="TextureRect" parent="." unique_id=770635114]
 offset_left = 2.0
@@ -469,6 +818,62 @@ offset_bottom = 126.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1102099444]
 libraries/ = SubResource("AnimationLibrary_uegxj")
+
+[node name="UpgradeDialog" type="Control" parent="." unique_id=178382579]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShadowBackground" type="ColorRect" parent="UpgradeDialog" unique_id=2022084846]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8666667)
+
+[node name="UpgradePanel" parent="UpgradeDialog" unique_id=1628725635 instance=ExtResource("10_y220t")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 105.0
+offset_bottom = 190.0
+scale = Vector2(0.8, 0.8)
+
+[node name="UpgradePanel2" parent="UpgradeDialog" unique_id=289013599 instance=ExtResource("10_y220t")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 50.0
+offset_right = 210.0
+offset_bottom = 190.0
+scale = Vector2(0.8, 0.8)
+
+[node name="UpgradePanel3" parent="UpgradeDialog" unique_id=1995850370 instance=ExtResource("10_y220t")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 215.0
+offset_top = 50.0
+offset_right = 315.0
+offset_bottom = 190.0
+scale = Vector2(0.8, 0.8)
+
+[node name="LevelUpAudio" type="AudioStreamPlayer" parent="." unique_id=1526106121]
+stream = ExtResource("18_4w2x3")
+volume_db = -20.0
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="." unique_id=5235847]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1375397986]
+stream = ExtResource("19_svq4k")
+autoplay = true
 
 [connection signal="pressed" from="GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="EndGamePanel/WonRestartButton" to="." method="_on_won_restart_button_pressed"]

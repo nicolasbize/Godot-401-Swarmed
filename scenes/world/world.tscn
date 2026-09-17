@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://ydrhchjw7xse" path="res://resources/enemies/vampire.tres" id="5_srmg5"]
 [ext_resource type="Resource" uid="uid://drk1gqgeg7l0u" path="res://resources/enemies/gargoyle.tres" id="6_umvgx"]
 [ext_resource type="Resource" uid="uid://cqx1baomteg4p" path="res://resources/enemies/skeleton.tres" id="7_mxkvs"]
+[ext_resource type="AudioStream" uid="uid://cbb4su56hw77k" path="res://assets/sounds/explosion.wav" id="11_5qq27"]
+[ext_resource type="AudioStream" uid="uid://duohdqjj2sj67" path="res://assets/sounds/shoot.wav" id="12_dlabj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbyeo"]
 size = Vector2(361, 20)
@@ -74,6 +76,12 @@ autostart = true
 
 [node name="UI" parent="." unique_id=1915319093 node_paths=PackedStringArray("player") instance=ExtResource("4_6m72w")]
 player = NodePath("../Player")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="." unique_id=124371940]
+stream = ExtResource("11_5qq27")
+
+[node name="BulletAudio" type="AudioStreamPlayer" parent="." unique_id=1164385738]
+stream = ExtResource("12_dlabj")
 
 [connection signal="shot" from="Player" to="." method="_on_player_shot"]
 [connection signal="timeout" from="SpawnTimer" to="." method="spawn_enemies"]

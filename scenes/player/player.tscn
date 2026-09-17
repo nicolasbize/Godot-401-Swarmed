@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c4bff3qak6sv1" path="res://assets/textures/characters/shadow.png" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://b40mhxxopo25l" path="res://scenes/player/player.gd" id="1_gmlin"]
 [ext_resource type="PackedScene" uid="uid://dtf45e2m7n57o" path="res://scenes/weapon/weapon.tscn" id="4_lvxji"]
+[ext_resource type="AudioStream" uid="uid://cklloh8p1pa4s" path="res://assets/sounds/coin.wav" id="5_p47bc"]
+[ext_resource type="AudioStream" uid="uid://c4vevx6pv3k64" path="res://assets/sounds/hurt.wav" id="6_75vfm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbyeo"]
 radius = 2.0
@@ -109,8 +111,6 @@ height = 6.0
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_gmlin")
-fire_rate = 5.0
-max_health = 2
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=444850054]
 texture = ExtResource("1_dovo2")
@@ -165,6 +165,12 @@ collision_mask = 4
 position = Vector2(-1, -2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_umx8v")
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="." unique_id=1844349456]
+stream = ExtResource("5_p47bc")
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="." unique_id=1626401606]
+stream = ExtResource("6_75vfm")
 
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

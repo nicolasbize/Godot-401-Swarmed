@@ -13,6 +13,8 @@ var coin_blueprint := preload("res://scenes/coin/coin.tscn")
 
 @onready var player: Player = $Player
 @onready var ui: UI = $UI
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var bullet_audio: AudioStreamPlayer = $BulletAudio
 
 func _ready() -> void:
 	spawn_enemies()
@@ -42,6 +44,7 @@ func pick_weighted_enemy(progress: float) -> EnemyData:
 	return enemies[-1]
 
 func _on_player_shot(bullet_global_position: Vector2, bullet_global_rotation: float, bullet_damage: int) -> void:
+	bullet_audio.play()
 	var bullet : Bullet = bullet_blueprint.instantiate()
 	add_child(bullet)
 	bullet.global_position = bullet_global_position
@@ -59,6 +62,7 @@ func _on_enemy_destroyed(enemy_global_position: Vector2, extra_damage: int, rewa
 	add_child.call_deferred(explosion)
 	explosion.global_position = enemy_global_position
 	explosion.splash_damage = extra_damage
+	explosion_audio.play()
 	
 	var coin : Coin = coin_blueprint.instantiate()
 	add_child.call_deferred(coin)

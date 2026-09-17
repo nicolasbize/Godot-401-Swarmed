@@ -14,6 +14,8 @@ signal leveled_up
 @onready var magnet_area: Area2D = $MagnetArea
 @onready var magnet_sphere: CollisionShape2D = $MagnetArea/MagnetSphere
 @onready var current_health = max_health
+@onready var coin_audio: AudioStreamPlayer = $CoinAudio
+@onready var hurt_audio: AudioStreamPlayer = $HurtAudio
 
 @export var speed := 50.0
 @export var fire_rate := 2.0
@@ -61,6 +63,7 @@ func attract_coins(delta: float) -> void:
 func add_coins(amount: int) -> void:
 	if current_state != State.Dying:
 		coins_collected += amount
+		coin_audio.play()
 		if coins_collected >= next_lvl_requirement:
 			current_level += 1
 			level_cost_increase += current_level * 2
@@ -89,6 +92,7 @@ func get_random_spawn_position() -> Vector2:
 func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
 	if body is Enemy and current_state == State.Moving:
 		current_health -= 1
+		hurt_audio.play()
 		if current_health == 0:
 			current_state = State.Dying
 			dead.emit()

@@ -1,14 +1,21 @@
 [gd_scene format=3 uid="uid://dbel4oet8ob4h"]
 
 [ext_resource type="Texture2D" uid="uid://djho53ww2v6aw" path="res://assets/textures/ui/upgrade-panel.png" id="1_cdmev"]
+[ext_resource type="Script" uid="uid://bqbm4wxpposa0" path="res://scenes/ui/upgrade_panel.gd" id="2_07vy7"]
 [ext_resource type="FontFile" uid="uid://di8cfisxjfcj7" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="2_jgoho"]
+[ext_resource type="Texture2D" uid="uid://djwl5ycmyty1y" path="res://assets/textures/ui/upgrade-panel-uncommon.png" id="3_hgys6"]
 [ext_resource type="Texture2D" uid="uid://cyh5nlkpuevne" path="res://assets/textures/upgrades/upgrade-damage.png" id="3_jgoho"]
+[ext_resource type="Texture2D" uid="uid://cmiyj8ydn2v8s" path="res://assets/textures/ui/upgrade-panel-rare.png" id="4_0bo23"]
 [ext_resource type="PackedScene" uid="uid://u5oxjbpqo8mq" path="res://scenes/ui/game_button.tscn" id="4_naqhr"]
+[ext_resource type="Texture2D" uid="uid://c0xvn73b8h8b5" path="res://assets/textures/ui/upgrade-panel-epic.png" id="5_y41p1"]
 
 [node name="UpgradePanel" type="TextureRect" unique_id=1628725635]
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_cdmev")
+script = ExtResource("2_07vy7")
+rarity_textures = Array[Texture2D]([ExtResource("1_cdmev"), ExtResource("3_hgys6"), ExtResource("4_0bo23"), ExtResource("5_y41p1")])
 
 [node name="UpgradeTitle" type="Label" parent="." unique_id=384647228]
 layout_mode = 0
@@ -81,10 +88,12 @@ theme_override_font_sizes/font_size = 12
 text = "3"
 horizontal_alignment = 1
 
-[node name="GameButton" parent="." unique_id=1922774249 instance=ExtResource("4_naqhr")]
+[node name="UpgradeButton" parent="." unique_id=1922774249 instance=ExtResource("4_naqhr")]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 116.0
 offset_right = 79.0
 offset_bottom = 136.0
 text = "UPGRADE!"
+
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]

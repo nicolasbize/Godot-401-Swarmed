@@ -7,3 +7,4 @@ extends Resource
 @export var description : String = ""
 @export var stat_name : String = ""
 @export var default_increase := 0.0
+@export var format := "%d"

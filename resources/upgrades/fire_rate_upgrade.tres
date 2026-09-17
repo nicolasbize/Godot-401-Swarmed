@@ -11,4 +11,5 @@ title = "FIRERATE"
 description = "INCREASE HOW FAST YOU CAN SHOOT"
 stat_name = "SHOTS PER SEC"
 default_increase = 0.2
+format = "%.1f"
 metadata/_custom_type_script = "uid://b0ako7rmbf7wy"
