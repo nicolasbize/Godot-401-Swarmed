@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://ydrhchjw7xse"]
+
+[ext_resource type="Script" uid="uid://dj7vhf7mdrlcf" path="res://resources/enemy_data.gd" id="1_gsdot"]
+[ext_resource type="Texture2D" uid="uid://cdybsyx1asyyq" path="res://assets/textures/characters/vampire.png" id="2_buh8n"]
+
+[sub_resource type="Curve" id="Curve_v7am5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28758168, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.86928105), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_gsdot")
+max_health = 14
+speed = 15.0
+reward = 2
+texture = ExtResource("2_buh8n")
+frequency = SubResource("Curve_v7am5")
+metadata/_custom_type_script = "uid://dj7vhf7mdrlcf"

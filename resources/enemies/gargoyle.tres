@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://drk1gqgeg7l0u"]
+
+[ext_resource type="Script" uid="uid://dj7vhf7mdrlcf" path="res://resources/enemy_data.gd" id="1_kela6"]
+[ext_resource type="Texture2D" uid="uid://w6y8ptgs16lv" path="res://assets/textures/characters/gargoyle.png" id="2_scfmk"]
+
+[sub_resource type="Curve" id="Curve_na82j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10784314, 0.751634), 0.0, 0.0, 0, 0, Vector2(0.5620915, 0.15686274), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_kela6")
+speed = 30.0
+texture = ExtResource("2_scfmk")
+frequency = SubResource("Curve_na82j")
+metadata/_custom_type_script = "uid://dj7vhf7mdrlcf"

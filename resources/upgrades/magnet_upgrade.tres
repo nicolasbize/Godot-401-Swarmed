@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://cgtgyb2gj7mdh"]
+
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="1_n56wb"]
+[ext_resource type="Texture2D" uid="uid://bis7yyhpubhmp" path="res://assets/textures/upgrades/upgrade-gold.png" id="1_w0vak"]
+
+[resource]
+script = ExtResource("1_n56wb")
+property = "magnet_strength"
+icon = ExtResource("1_w0vak")
+title = "MAGNET UPGRADE"
+description = "SHOW ME THE MONEY!"
+stat_name = "MAGNET STRENGTH"
+default_increase = 5.0
+metadata/_custom_type_script = "uid://b0ako7rmbf7wy"

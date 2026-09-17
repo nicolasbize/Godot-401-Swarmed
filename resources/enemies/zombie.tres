@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://b0rbi4uw5fylw"]
+
+[ext_resource type="Script" uid="uid://dj7vhf7mdrlcf" path="res://resources/enemy_data.gd" id="1_mdsr3"]
+[ext_resource type="Texture2D" uid="uid://cnr7sks2dv4a3" path="res://assets/textures/characters/zombie.png" id="2_v7am5"]
+
+[sub_resource type="Curve" id="Curve_scfmk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.40522876, 0.78431374), 0.0, 0.0, 0, 0, Vector2(1, 0.22875816), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_mdsr3")
+max_health = 9
+speed = 11.0
+reward = 1
+texture = ExtResource("2_v7am5")
+frequency = SubResource("Curve_scfmk")
+metadata/_custom_type_script = "uid://dj7vhf7mdrlcf"

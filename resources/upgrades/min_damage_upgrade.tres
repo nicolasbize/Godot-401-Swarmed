@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://btqjva1bd7ajw"]
+
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="1_hutf3"]
+[ext_resource type="Texture2D" uid="uid://cyh5nlkpuevne" path="res://assets/textures/upgrades/upgrade-damage.png" id="1_j1apn"]
+
+[resource]
+script = ExtResource("1_hutf3")
+property = "damage_min"
+icon = ExtResource("1_j1apn")
+title = "DAMAGE UPGRADE"
+description = "INCREASE HOW MUCH IT HURTS"
+stat_name = "MIN DAMAGE"
+default_increase = 1.0
+metadata/_custom_type_script = "uid://b0ako7rmbf7wy"

@@ -9,7 +9,10 @@ var explosion_area_blueprint := preload("res://scenes/explosion_area/explosion_a
 var enemy_blueprint := preload("res://scenes/enemy/enemy.tscn")
 var coin_blueprint := preload("res://scenes/coin/coin.tscn")
 
+@export var enemies : Array[EnemyData]
+
 @onready var player: Player = $Player
+@onready var ui: UI = $UI
 
 func _ready() -> void:
 	spawn_enemies()
@@ -22,6 +25,21 @@ func spawn_enemies() -> void:
 		enemy.player = player
 		enemy.global_position = player.get_random_spawn_position()
 		add_child(enemy)
+		var progress := ui.get_game_progress()
+		var enemy_data := pick_weighted_enemy(progress)
+		enemy.setup(enemy_data)
+
+func pick_weighted_enemy(progress: float) -> EnemyData:
+	var total_weights : Array[float] = []
+	var sum := 0.0
+	for enemy in enemies:
+		sum += enemy.frequency.sample(progress)
+		total_weights.append(sum)
+	var weight_value := randf_range(0, sum)
+	for i in enemies.size() - 1:
+		if weight_value < total_weights[i]:
+			return enemies[i]
+	return enemies[-1]
 
 func _on_player_shot(bullet_global_position: Vector2, bullet_global_rotation: float, bullet_damage: int) -> void:
 	var bullet : Bullet = bullet_blueprint.instantiate()

@@ -2,8 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dqhlkss18rwai" path="res://scenes/world/world.gd" id="1_1fp7r"]
 [ext_resource type="Texture2D" uid="uid://r8c1mr31dunb" path="res://assets/textures/backgrounds/map-background.png" id="1_dphjl"]
+[ext_resource type="Script" uid="uid://dj7vhf7mdrlcf" path="res://resources/enemy_data.gd" id="2_gb53w"]
 [ext_resource type="PackedScene" uid="uid://c6wadhpdu25p3" path="res://scenes/player/player.tscn" id="2_sl2e5"]
+[ext_resource type="Resource" uid="uid://syd2x63gm30v" path="res://resources/enemies/blob.tres" id="3_5qq27"]
 [ext_resource type="PackedScene" uid="uid://c3sye7ekjtgvm" path="res://scenes/ui/ui.tscn" id="4_6m72w"]
+[ext_resource type="Resource" uid="uid://b0rbi4uw5fylw" path="res://resources/enemies/zombie.tres" id="4_dlabj"]
+[ext_resource type="Resource" uid="uid://ydrhchjw7xse" path="res://resources/enemies/vampire.tres" id="5_srmg5"]
+[ext_resource type="Resource" uid="uid://drk1gqgeg7l0u" path="res://resources/enemies/gargoyle.tres" id="6_umvgx"]
+[ext_resource type="Resource" uid="uid://cqx1baomteg4p" path="res://resources/enemies/skeleton.tres" id="7_mxkvs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbyeo"]
 size = Vector2(361, 20)
@@ -14,6 +20,7 @@ size = Vector2(20, 290)
 [node name="World" type="Node2D" unique_id=213811152]
 y_sort_enabled = true
 script = ExtResource("1_1fp7r")
+enemies = Array[ExtResource("2_gb53w")]([ExtResource("3_5qq27"), ExtResource("4_dlabj"), ExtResource("5_srmg5"), ExtResource("6_umvgx"), ExtResource("7_mxkvs")])
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1764845822]
 texture = ExtResource("1_dphjl")

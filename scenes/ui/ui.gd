@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	if not get_tree().paused:
 		secs_since_start += delta
 	if player != null:
-		coin_label.text = "%d" % player.coins_collected
+		coin_label.text = "%d/%d" % [player.coins_collected, player.next_lvl_requirement]
 		health_label.text = "%d/%d" % [player.current_health, player.max_health]
 		var secs_left : int = game_duration_min * 60 - secs_since_start
 		var mins : int = secs_left / 60
@@ -37,6 +37,10 @@ func finish_game() -> void:
 	animation_player.play("show_ending")
 	final_score_label.text = "SCORE: %d" % player.coins_collected
 	get_tree().paused = true
+
+func get_game_progress() -> float:
+	var total_secs := game_duration_min * 60.0
+	return clamp(secs_since_start / total_secs, 0.0, 1.0)
 
 func on_player_death() -> void:
 	animation_player.play("show_game_over")

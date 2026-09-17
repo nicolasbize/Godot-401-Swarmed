@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dbel4oet8ob4h"]
+
+[ext_resource type="Texture2D" uid="uid://djho53ww2v6aw" path="res://assets/textures/ui/upgrade-panel.png" id="1_cdmev"]
+[ext_resource type="FontFile" uid="uid://di8cfisxjfcj7" path="res://assets/fonts/my 3x5 tiny mono pixel font.ttf" id="2_jgoho"]
+[ext_resource type="Texture2D" uid="uid://cyh5nlkpuevne" path="res://assets/textures/upgrades/upgrade-damage.png" id="3_jgoho"]
+[ext_resource type="PackedScene" uid="uid://u5oxjbpqo8mq" path="res://scenes/ui/game_button.tscn" id="4_naqhr"]
+
+[node name="UpgradePanel" type="TextureRect" unique_id=1628725635]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cdmev")
+
+[node name="UpgradeTitle" type="Label" parent="." unique_id=384647228]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = 79.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0.21176471, 0.15294118, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_jgoho")
+theme_override_font_sizes/font_size = 6
+text = "DAMAGE UPGRADE"
+horizontal_alignment = 1
+
+[node name="UpgradeDescription" type="Label" parent="." unique_id=1054515990]
+custom_minimum_size = Vector2(80, 32)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 51.0
+offset_right = 90.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.21176471, 0.15294118, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_jgoho")
+theme_override_font_sizes/font_size = 6
+text = "INCREASE HOW MUCH IT HURTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="UpgradeIcon" type="TextureRect" parent="." unique_id=287114540]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 19.0
+offset_right = 59.0
+offset_bottom = 37.0
+texture = ExtResource("3_jgoho")
+
+[node name="UpgradeStatName" type="Label" parent="." unique_id=755079494]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 93.0
+offset_right = 80.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(0.21176471, 0.15294118, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_jgoho")
+theme_override_font_sizes/font_size = 6
+text = "MIN DAMAGE"
+horizontal_alignment = 1
+
+[node name="UpgradeBeforeValue" type="Label" parent="." unique_id=810161962]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 100.0
+offset_right = 44.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.21176471, 0.15294118, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_jgoho")
+theme_override_font_sizes/font_size = 12
+text = "3"
+horizontal_alignment = 1
+
+[node name="UpgradeAfterValue" type="Label" parent="." unique_id=78705177]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 100.0
+offset_right = 88.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.21176471, 0.15294118, 0.19215687, 1)
+theme_override_fonts/font = ExtResource("2_jgoho")
+theme_override_font_sizes/font_size = 12
+text = "3"
+horizontal_alignment = 1
+
+[node name="GameButton" parent="." unique_id=1922774249 instance=ExtResource("4_naqhr")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 116.0
+offset_right = 79.0
+offset_bottom = 136.0
+text = "UPGRADE!"

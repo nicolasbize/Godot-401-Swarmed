@@ -31,6 +31,13 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	move_and_slide()
 
+func setup(data: EnemyData) -> void:
+	reward = data.reward
+	speed = data.speed
+	max_health = data.max_health
+	current_health = max_health
+	enemy_sprite.texture = data.texture
+
 func _on_timer_timeout() -> void:
 	animation_player.play("walk")
 

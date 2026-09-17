@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://syd2x63gm30v"]
+
+[ext_resource type="Script" uid="uid://dj7vhf7mdrlcf" path="res://resources/enemy_data.gd" id="1_m8whk"]
+[ext_resource type="Texture2D" uid="uid://dtqqa4ubttwpe" path="res://assets/textures/characters/blob.png" id="2_na82j"]
+
+[sub_resource type="Curve" id="Curve_gb53w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_m8whk")
+max_health = 3
+speed = 8.0
+texture = ExtResource("2_na82j")
+frequency = SubResource("Curve_gb53w")
+metadata/_custom_type_script = "uid://dj7vhf7mdrlcf"

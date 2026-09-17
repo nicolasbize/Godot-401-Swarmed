@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://d21tb4y03b6tq"]
+
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="1_aalc0"]
+[ext_resource type="Texture2D" uid="uid://du1xu60h4ltg5" path="res://assets/textures/upgrades/upgrade-firerate.png" id="1_apd2n"]
+
+[resource]
+script = ExtResource("1_aalc0")
+property = "fire_rate"
+icon = ExtResource("1_apd2n")
+title = "FIRERATE"
+description = "INCREASE HOW FAST YOU CAN SHOOT"
+stat_name = "SHOTS PER SEC"
+default_increase = 0.2
+metadata/_custom_type_script = "uid://b0ako7rmbf7wy"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://fwle40c0d6gd"]
+
+[ext_resource type="Texture2D" uid="uid://cyh5nlkpuevne" path="res://assets/textures/upgrades/upgrade-damage.png" id="1_7k1bx"]
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="2_bhtnh"]
+
+[resource]
+script = ExtResource("2_bhtnh")
+property = "damage_max"
+icon = ExtResource("1_7k1bx")
+title = "DAMAGE UPGRADE"
+description = "INCREASE HOW MUCH IT HURTS"
+stat_name = "MAX DAMAGE"
+default_increase = 1.0
+metadata/_custom_type_script = "uid://b0ako7rmbf7wy"

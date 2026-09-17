@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://djd5pgwpund8h"]
+
+[ext_resource type="Texture2D" uid="uid://2ub7d6msjlfl" path="res://assets/textures/upgrades/upgrade-heart.png" id="1_63vdw"]
+[ext_resource type="Script" uid="uid://b0ako7rmbf7wy" path="res://resources/upgrade_data.gd" id="1_e5wbj"]
+
+[resource]
+script = ExtResource("1_e5wbj")
+property = "max_health"
+icon = ExtResource("1_63vdw")
+title = "LIFE UPGRADE"
+description = "INCREASE MAX HP AND REFILL YOUR HEALTH"
+stat_name = "MAX HEALTH"
+default_increase = 1.0
+metadata/_custom_type_script = "uid://b0ako7rmbf7wy"

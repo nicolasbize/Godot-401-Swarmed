@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal shot(bullet_global_position: Vector2, bullet_global_rotation: float, bullet_damage: int)
 signal dead
+signal leveled_up
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var weapon_pivot: Node2D = $WeaponPivot
@@ -25,6 +26,9 @@ signal dead
 enum State {Moving, Hurting, Dying}
 
 var current_state := State.Moving
+var current_level := 1
+var next_lvl_requirement := 5
+var level_cost_increase := 2
 
 func _ready() -> void:
 	shot_timer.start(1.0 / fire_rate)
@@ -57,6 +61,11 @@ func attract_coins(delta: float) -> void:
 func add_coins(amount: int) -> void:
 	if current_state != State.Dying:
 		coins_collected += amount
+		if coins_collected >= next_lvl_requirement:
+			current_level += 1
+			level_cost_increase += current_level * 2
+			next_lvl_requirement += level_cost_increase
+			leveled_up.emit()
 
 func aim_at(target: Vector2) -> void:
 	var weapon_direction := weapon_pivot.global_position.direction_to(target)
